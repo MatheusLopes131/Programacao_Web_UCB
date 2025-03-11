@@ -4,7 +4,7 @@ let n2 = 3;
 let soma = n1+n2;
 let sub = n1-n2;
 let mult = n1*n2;
-let div = n1/n2
+let div = n1/n2;
 
 console.log('Resultado da soma entre '+n1+ ' e ' +n2+ ' é: ' +soma);
 console.log('Resultado da subtração entre '+n1+ ' e ' +n2+ ' é: ' +sub);

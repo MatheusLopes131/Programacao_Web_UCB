@@ -1,0 +1,2 @@
+cd "pasta do arquivo" - achar pasta do arquivo
+node "nome do arquivo" - rodar o arquivo
