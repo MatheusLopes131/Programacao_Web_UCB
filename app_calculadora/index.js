@@ -4,7 +4,13 @@ const express = require('express');
 const app = express();
 
 app.get('/', (req, res)=>{
-    res.send('Olá, mundo!');
+    let html = '<h1>app_calculadora</h1>';
+    html += '<h3>Rotas disponíveis:</h3>';
+    html += '<p>/somar/:a/:b <a href="/somar/1/2">testar</a></p>';
+    html += '<p>/subtrair/:a/:b <a href="/subtrair/1/2">testar</a></p>';
+    html += '<p>/multiplicar/:a/:b <a href="/multiplicar/1/2">testar</a></p>';
+    html += '<p>/dividir/:a/:b <a href="/dividir/1/2">testar</a></p>';
+    res.send(html);
 });
 
 app.get('/ola/:nome', (req,res)=>{
