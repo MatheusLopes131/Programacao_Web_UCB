@@ -10,21 +10,26 @@ function lista(){
     return itens;
 }
 
-function remover(posicao){
-    itens.splice(posicao,1)
-    itens.splice(posicao,1)
-    itens.splice(posicao,1)
+function remover(id){
+    itens.forEach(item_cadastrado => {
+        if(item_cadastrado.id == id){
+            itens.splice(item_cadastrado.id,1) 
+        }
+    })
 }
 
-function editar(num,quant){
-    let posicao = itens.indexOf(num)
-    itens.splice(posicao,1,quant)
+function editar(id,qtd){
+    itens.forEach(item_cadastrado => {
+        if(item_cadastrado.id == id){
+            item_cadastrado.quantidade = qtd;
+        }
+    });
 }
+
 
 module.exports = { 
     adicionar,
     lista,
     remover,
     editar,
-    itens
 }

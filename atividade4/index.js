@@ -31,8 +31,7 @@ app.get('/listar', (req,res)=>{
 });
 
 app.get('/remover/:id', (req,res)=>{
-    let posicao = item.indexOf(req.params.id)
-    esto.remover(posicao)
+    esto.remover(Number(req.params.id))
     res.send(`Produto Removido!!!`);
 });
 
