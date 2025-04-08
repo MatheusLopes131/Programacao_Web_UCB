@@ -1,30 +1,24 @@
-let id = []
-let produtos = []
-let quantidade = []
+let itens = []
 
 
-function adicionar(num,produto,quant){
-    id.push(num)
-    produtos.push(produto)
-    quantidade.push(quant)
+
+function adicionar(objeto){
+        itens.push(objeto)
 }
 
 function lista(){
-    for(let i = 0; i < id.length; i++){
-        console.log(`ID = ${id[i]} / Produto = ${produtos[i]} / Quantidade = ${quantidade[i]}`)
-    }
+    return itens;
 }
 
-function remover(num){
-    let posicao = id.indexOf(num)
-    id.splice(posicao,1)
-    produtos.splice(posicao,1)
-    quantidade.splice(posicao,1)
+function remover(posicao){
+    itens.splice(posicao,1)
+    itens.splice(posicao,1)
+    itens.splice(posicao,1)
 }
 
 function editar(num,quant){
-    let posicao = id.indexOf(num)
-    quantidade.splice(posicao,1,quant)
+    let posicao = itens.indexOf(num)
+    itens.splice(posicao,1,quant)
 }
 
 module.exports = { 
@@ -32,7 +26,5 @@ module.exports = {
     lista,
     remover,
     editar,
-    produtos,
-    id,
-    quantidade
+    itens
 }

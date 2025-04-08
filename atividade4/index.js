@@ -17,21 +17,27 @@ app.get('/', (req, res)=>{
 });
 
 app.get('/adicionar/:id/:nome/:qtd', (req,res)=>{
-    esto.adicionar((req.params.id),(req.params.nome),(req.params.qtd));
+    let item = {
+        id:(Number(req.params.id)),
+        produtos:(req.params.nome),
+        quantidade:(Number(req.params.qtd))
+    }
+    esto.adicionar(item);
     res.send(`Produto Adicionado!!!`);
 });
 
 app.get('/listar', (req,res)=>{
-    res.send(`${esto.lista}`)
+    res.send(esto.lista())
 });
 
 app.get('/remover/:id', (req,res)=>{
-    esto.remover((req.params.id))
+    let posicao = item.indexOf(req.params.id)
+    esto.remover(posicao)
     res.send(`Produto Removido!!!`);
 });
 
 app.get('/editar/:id/:qtd', (req,res)=>{
-    esto.editar((req.params.id),(req.params.qtd))
+    esto.editar((Number(req.params.id)),(Number(req.params.qtd)))
     res.send(`Produto Editado!!!`);
 });
 
