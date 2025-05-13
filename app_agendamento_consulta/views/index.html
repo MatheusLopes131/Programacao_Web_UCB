@@ -14,6 +14,19 @@
                 <div class="col-12 text-center ,t-3">
                     <h1>Agendamento</h1>
                 </div>
+                <div class="col -12 mt-3">
+                    {{#form_invalido}}
+                    <div class="alert alert-danger">
+                        <strong>Formulário</strong> inválido! Preencha todos os campos.
+                    </div>
+                    {{/form_invalido}}
+
+                    {{#campos_invalidos}}
+                    <div class="alert alert-danger mt-1">
+                        <strong>{{.}}</strong> inválido! Não pode ser vazio.
+                    </div>
+                    {{/campos_invalidos}}
+                </div>
             </div>
 
             <form action="/agendar_consulta" method="POST">
@@ -23,17 +36,17 @@
 
                     <div class="col-6 mt-1">
                         <label for="nome" class="form-label">Nome:</label>
-                        <input type="text" class="form-control" name="nome" id="nome">
+                        <input type="text" class="form-control" name="nome" id="nome" value="{{dados_consulta.nome}}">
                     </div>
 
                     <div class="col-6 mt-1">
                         <label for="sobrenome" class="form-label">Sobrenome:</label>
-                        <input type="text" class="form-control" name="sobrenome" id="sobrenome">
+                        <input type="text" class="form-control" name="sobrenome" id="sobrenome" value="{{dados_consulta.sobrenome}}">
                     </div>
 
                     <div class="col-6 mt-1">
                         <label for="cpf" class="form-label">CPF:</label>
-                        <input type="text" class="form-control" name="cpf" id="cpf">
+                        <input type="text" class="form-control" name="cpf" id="cpf" value="{{dados_consulta.cpf}}">
                     </div>
 
                     <div class="col-6 mt-1">
