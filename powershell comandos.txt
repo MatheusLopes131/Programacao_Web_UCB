@@ -3,4 +3,5 @@ node "nome do arquivo" - rodar o arquivo
 
 npm init - adicionar o package.json
 npm install express@4.21.2 - instalar o pacote express
+npm install mustache-express@1.3.2 - instalar o pacote mustache
 Ctrl + c - Mata o processo em execução
