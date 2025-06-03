@@ -1,62 +1,84 @@
+const AgendamentoConsulta = require('../models/agendamentoConsultaModel');
+
 function getIndexView(req,res){
     res.render('index.html');
 }
 
+function getAgendamentosView(req,res){
+    AgendamentoConsulta.findAll().then((agendamentos)=>{
+        res.render()
+    })
+    res.render('agendamentos.html');
+}
+
 function postAgendarConsulta(req,res){
-    let form_invalido = false;
-    let campos_invalidos = [];
-
     let dados_consulta = req.body;
+    let campos_invalidos = validarRequisicaoAgendamentoConsulta(dados_consulta);
 
-    if (req.body.nome.length == 0){
-        form_invalido = true;
-        campos_invalidos.push("Nome");
+    if(campos_invalidos.length == 0){
+        AgendamentoConsulta.create(dados_consulta).then(()=>{
+            res.redirect('/agendamentos');
+        });
     }
-    if (req.body.sobrenome.length == 0){
-        form_invalido = true;
-        campos_invalidos.push("Sobrenome");
+    else{
+        res.render('index.html', {form_invalido, campos_invalidos, dados_consulta});
     }
-    if (req.body.cpf.length == 0){
-        form_invalido = true;
-        campos_invalidos.push("CPF");
-    }
-    if (req.body.data_nascimento.length == 0){
-        form_invalido = true;
-        campos_invalidos.push("Data de nascimento")
-    }
-    if (req.body.telefone.length == 0){
-        form_invalido = true;
-        campos_invalidos.push("Telefone")
-    }
-    if (req.body.cep.length == 0){
-        form_invalido = true;
-        campos_invalidos.push("CEP")
-    }
-    if (req.body.endereco.length == 0){
-        form_invalido = true;
-        campos_invalidos.push("Endereço")
-    }
-    if (req.body.clinica.length == 0){
-        form_invalido = true;
-        campos_invalidos.push("Clínica")
-    }
-    if (req.body.especialidade.length == 0){
-        form_invalido = true;
-        campos_invalidos.push("Especialidade")
-    }
-    if (req.body.data_consulta.length == 0){
-        form_invalido = true;
-        campos_invalidos.push("Data da consulta")
-    }
-    if (req.body.hora_consulta.length == 0){
-        form_invalido = true;
-        campos_invalidos.push("Hora da consulta")
-    }
-
-    res.render('index.html', {form_invalido, campos_invalidos, dados_consulta});
 }
 
 module.exports = {
     getIndexView,
-    postAgendarConsulta
+    postAgendarConsulta,
+    getAgendamentosView
 }
+
+function validarRequisicaoAgendamentoConsulta(dados_consulta){
+    let campos_invalidos = [];
+    
+    if (dados_consulta.nome.length == 0){
+        form_invalido = true;
+        campos_invalidos.push("Nome");
+    }
+    if (dados_consulta.sobrenome.length == 0){
+        form_invalido = true;
+        campos_invalidos.push("Sobrenome");
+    }
+    if (dados_consulta.cpf.length == 0){
+        form_invalido = true;
+        campos_invalidos.push("CPF");
+    }
+    if (dados_consulta.data_nascimento.length == 0){
+        form_invalido = true;
+        campos_invalidos.push("Data de nascimento")
+    }
+    if (dados_consulta.telefone.length == 0){
+        form_invalido = true;
+        campos_invalidos.push("Telefone")
+    }
+    if (dados_consulta.cep.length == 0){
+        form_invalido = true;
+        campos_invalidos.push("CEP")
+    }
+    if (dados_consulta.endereco.length == 0){
+        form_invalido = true;
+        campos_invalidos.push("Endereço")
+    }
+    if (dados_consulta.clinica.length == 0){
+        form_invalido = true;
+        campos_invalidos.push("Clínica")
+    }
+    if (dados_consulta.especialidade.length == 0){
+        form_invalido = true;
+        campos_invalidos.push("Especialidade")
+    }
+    if (dados_consulta.data_consulta.length == 0){
+        form_invalido = true;
+        campos_invalidos.push("Data da consulta")
+    }
+    if (dados_consulta.hora_consulta.length == 0){
+        form_invalido = true;
+        campos_invalidos.push("Hora da consulta")
+    }
+
+    return campos_invalidos;
+}
+
