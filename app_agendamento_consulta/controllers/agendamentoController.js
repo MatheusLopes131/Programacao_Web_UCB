@@ -6,9 +6,9 @@ function getIndexView(req,res){
 
 function getAgendamentosView(req,res){
     AgendamentoConsulta.findAll().then((agendamentos)=>{
-        res.render()
+        res.render('agendamentos.html', {agendamentos});
     })
-    res.render('agendamentos.html');
+
 }
 
 function postAgendarConsulta(req,res){
