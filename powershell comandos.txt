@@ -5,6 +5,7 @@ npm init - adicionar o package.json
 npm install express@4.21.2 - instalar o pacote express
 npm install mustache-express@1.3.2 - instalar o pacote mustache
 npm install sqlite3@5.1.6 sequelize@6.31.1 - instalar o pacote sqlite3 e sequelize
+npm install express-session@1.17.2 - instalar o pacote de sessão
 Ctrl + c - Mata o processo em execução
 
 Extensão: SQLite Viewer
